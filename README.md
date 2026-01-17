@@ -1,36 +1,34 @@
-# 🎬 ByteSize – Automatic Reel Generator with Multimodal AI
+# 🎬 ImpByte – Multimodal Automatic Reel Generator
 
-Turn long-form videos into **viral-ready short reels** automatically.
+ImpByte is a **multimodal AI system** that automatically converts **long-form videos** (lectures, podcasts, interviews) into **platform-ready short reels** for **Instagram Reels, YouTube Shorts, and TikTok**.
 
-ByteSize is a **multimodal AI system** that analyzes long videos (lectures, podcasts, interviews) and automatically extracts **high-impact moments**, converts them into **platform-ready vertical reels**, and overlays **readable captions** — all with **zero manual editing**.
-
-Built as a **hackathon project** to demonstrate **real-world multimodal reasoning**, **robust engineering**, and **creator-focused AI design**.
+The system combines **audio analysis**, **speech understanding**, and **semantic reasoning** to identify high-impact moments, dynamically extract meaningful clips, and generate **vertical 9:16 videos with captions** — all with **zero manual editing**.
 
 ---
 
-## 🚀 Problem Statement
+## 🚀 Problem Motivation
 
-Long-form videos contain valuable insights, but:
+Long videos often contain valuable insights, but:
 
-* Viewers prefer **30–100 second short-form content**
-* Finding highlights manually is **slow and subjective**
-* Converting videos into **Reels / Shorts / TikTok format** is tedious
-* Captioning takes time and effort
+* Viewers prefer **short (30–100 second) vertical content**
+* Manually finding highlights is **time-consuming and subjective**
+* Converting 16:9 videos into reels often **cuts important content**
+* Captioning and formatting require significant manual effort
 
-👉 **ByteSize automates the entire pipeline.**
+👉 **ImpByte automates the entire process end-to-end.**
 
 ---
 
-## 🧠 Why ByteSize Is Multimodal
+## 🧠 Why ImpByte Is Multimodal
 
-ByteSize fuses **three complementary signals**:
+ImpByte fuses **multiple complementary signals**:
 
 ### 🔊 Audio Intelligence (How it’s said)
 
-* Detects loudness / emphasis peaks
-* Captures excitement, stress, or importance
+* Detects loudness and emphasis peaks
+* Captures excitement, stress, and importance
 
-### 🧠 Language Understanding (What is said)
+### 🧠 Speech Understanding (What is said)
 
 * Uses **OpenAI Whisper**
 * Produces timestamped transcript segments
@@ -39,10 +37,10 @@ ByteSize fuses **three complementary signals**:
 ### 🤖 Semantic Reasoning (Why it matters)
 
 * Uses **Google Gemini 2.5 Flash**
-* Ranks segments by reel-worthiness
+* Ranks candidate segments by reel-worthiness
 * Selects standalone, meaningful ideas
 
-👉 **Only moments that are both energetic *and* meaningful are selected.**
+👉 Only moments that are **energetic AND meaningful** are selected.
 
 ---
 
@@ -102,35 +100,72 @@ ByteSize fuses **three complementary signals**:
 │ Instagram / Shorts / TikTok │
 └────────────────────────────┘
 ```
-
 ---
 
 ## 🎥 Aspect-Aware Reel Conversion (Key Design Choice)
 
-ByteSize intelligently adapts to **any input video shape**:
+ImpByte intelligently adapts to **any input video shape**:
 
-| Input Type        | Example          | Output Behavior              |
-| ----------------- | ---------------- | ---------------------------- |
-| Vertical (9:16)   | Phone recording  | ✅ Preserved as-is            |
-| Horizontal (16:9) | YouTube / Laptop | ✅ Fit into 9:16 with padding |
-| Square / 4:3      | Mixed sources    | ✅ Scaled + padded            |
-| Any               |                  | ❌ No cropping, no distortion |
+| Input Type        | Example                | Output Behavior                |
+| ----------------- | ---------------------- | ------------------------------ |
+| Vertical (9:16)   | Phone-recorded video   | Preserved as-is                |
+| Horizontal (16:9) | YouTube / laptop video | Scaled + padded to 9:16        |
+| Square / 4:3      | Mixed sources          | Scaled + padded                |
+| Any               |                        | ❌ No cropping, ❌ no distortion |
 
-This ensures **zero content loss** and **professional reel formatting**.
+This guarantees **zero content loss** while maintaining a **native mobile viewing experience**.
 
 ---
 
 ## ✨ Key Features
 
-* ✅ Automatic highlight detection
-* ✅ Audio + text multimodal reasoning
-* ✅ Semantic ranking with Gemini
-* ✅ Dynamic clip length (40–100s)
-* ✅ Aspect-aware reel conversion
-* ✅ Platform-native vertical videos (9:16)
-* ✅ High-contrast caption burn-in
-* ✅ CLI pipeline + Streamlit UI
-* ✅ Robust fallbacks (never crashes)
+* Automatic highlight detection
+* Multimodal reasoning (audio + language)
+* Semantic ranking using Gemini 2.5 Flash
+* Dynamic clip lengths (40–100 seconds)
+* Aspect-aware vertical reel conversion
+* No cropping of original content
+* High-contrast caption burn-in
+* Deterministic FFmpeg-based pipeline
+* CLI pipeline + Streamlit UI
+* Robust fallbacks for stability
+
+---
+
+## 🎥 Demo – Input & Generated Outputs
+
+ImpByte was evaluated end-to-end on a real long-form video.
+
+### ▶️ Input: Long-Form Video
+
+Original source video provided to the system:
+
+🔗 [https://drive.google.com/file/d/1KDf3N9E1lU5IBJpyhOvVsc2HCjg8G5mr/view](https://drive.google.com/file/d/1KDf3N9E1lU5IBJpyhOvVsc2HCjg8G5mr/view)
+
+---
+
+### 📱 Output: Generated Reels (9:16)
+
+All reels automatically generated from the above input video:
+
+📂 [https://drive.google.com/drive/folders/1pcglVT7XghZ9eUsYN2gRiMWo_OjgK3ue](https://drive.google.com/drive/folders/1pcglVT7XghZ9eUsYN2gRiMWo_OjgK3ue)
+
+---
+
+### What this demo demonstrates:
+
+* Automatic detection of multiple high-impact moments
+* Semantic segment selection (not random cuts)
+* Dynamic clip durations
+* Aspect-aware 9:16 formatting
+* No cropping of original content
+* Caption burn-in optimized for mobile viewing
+
+All outputs were generated **fully automatically**, with:
+
+* No manual timestamp selection
+* No manual cropping
+* No manual captioning
 
 ---
 
@@ -148,7 +183,7 @@ This ensures **zero content loss** and **professional reel formatting**.
 
 ## ▶️ How to Run (CLI)
 
-### 1️⃣ Setup Environment
+### 1️⃣ Setup
 
 ```bash
 python3 -m venv venv
@@ -176,7 +211,7 @@ python main.py
 
 ### 4️⃣ Output
 
-```
+```text
 output/clips/
 ├── reel_1.mp4
 ├── reel_1_vertical.mp4
@@ -193,28 +228,28 @@ These files are **directly uploadable** to:
 
 ---
 
-## 🖥️ How to Run (Streamlit Demo)
+## 🖥️ Streamlit Demo UI
 
 ```bash
 streamlit run app.py
 ```
 
-### Demo UI Features
+### UI Features
 
-* Upload long video
+* Upload long-form video
 * Automatic processing
 * Preview generated reels
-* Judge-friendly visualization
+* Same backend as CLI (no divergence)
 
 ---
 
 ## 🧠 Engineering Highlights
 
+* Aspect-aware video processing
 * Deterministic FFmpeg pipeline (no ImageMagick)
-* Aspect-aware video handling
-* Defensive GenAI integration with fallbacks
-* Clean separation: perception → reasoning → execution
-* Same backend for CLI and UI (no divergence)
+* Defensive GenAI integration with safe fallbacks
+* Clear separation of perception, reasoning, and execution
+* Designed for real-world creator workflows
 
 ---
 
@@ -222,7 +257,7 @@ streamlit run app.py
 
 * Face-aware smart cropping (MediaPipe)
 * Word-level karaoke captions
-* Blurred background padding
+* Blurred or branded background padding
 * Auto-generated hook text
 * GPU acceleration for faster processing
 
@@ -230,14 +265,13 @@ streamlit run app.py
 
 ## 🏁 Conclusion
 
-ByteSize turns **one long video into multiple high-quality reels**, saving creators hours of manual work.
+ImpByte demonstrates how **multimodal AI** can be combined with **practical video engineering** to solve real creator problems.
 
-It demonstrates how **multimodal AI** can be combined with **practical video engineering** to solve real creator problems in a production-style pipeline.
+It transforms a single long-form video into **multiple high-quality, platform-ready reels**, reducing manual effort while preserving content integrity.
 
 ---
 
 ## 👤 Author
 
 **Ashant Kumar**
-
 
