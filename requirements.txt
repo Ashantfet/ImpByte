@@ -1,0 +1,11 @@
+moviepy>=2.0.0
+librosa>=0.10.0
+numpy>=1.24.0
+openai-whisper
+torch
+ffmpeg-python
+tqdm
+imageio
+imageio-ffmpeg
+python-dotenv
+google-generativeai
